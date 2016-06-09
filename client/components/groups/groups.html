@@ -1,0 +1,13 @@
+<div class="col-xs-12 groups-header">
+    <div class="col-xs-6">
+        <h2 class="text-center">Groups</h2>
+    </div>
+</div>
+
+<div class="col-xs-12" ng-controller="GroupsController">
+    <div ng-repeat="group in currentUser().groups">
+        <h4>{{group.name}}</h4>
+        <div class="hr-border"></div>
+    </div>
+    <div class="round-button btn btn-xs" ui-sref="creategroup"><span>+</span></div>
+</div>

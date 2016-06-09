@@ -1,0 +1,15 @@
+<div ng-include="'components/header/header.html'"></div>
+
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="oneAtATime">
+        Open only one at a time
+    </label>
+</div>
+<div>
+    <uib-accordion close-others="oneAtATime">
+        <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+            {{group.content}}
+        </uib-accordion-group>
+    </uib-accordion>
+</div>

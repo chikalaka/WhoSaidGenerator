@@ -1,0 +1,95 @@
+<div ng-include="'components/header/header.html'"></div>
+
+<div class="col-xs-12">
+    <div class="col-xs-3">
+        <div ng-include="'components/groups/groups.html'"></div>
+    </div>
+    <div class="col-xs-9">
+        <div class="container" id="groupboxh">
+            <div class='col-xs-9' id="groupheader" >
+                <h2 id="htp">Create Group</h2>
+            </div>
+        </div>
+        
+        <p>{{newGroup}}</p>
+        <p>{{newGroup.name}}</p>
+        <p>{{newGroup.users}}</p>
+        <p>bla bla</p>
+        <p>{{newGroup._id}}</p>
+        
+        <div>
+            <div class="form-group" id ="createname">
+                <label class="col-sm-2 control-label" id ="createleftmargin">Group Name :</label>
+                <div class="col-sm-8" >
+                    <input type="text" class="form-control" name="Group Name" placeholder="Group Name" id="createwidth" ng-model="newGroup.name">
+                </div>
+            </div>
+            <br>
+            <div class="form-group" style ="margin-top: 40px;">
+                <label for="emailid" class="col-sm-2 control-label" id ="createleftmargin">Members :</label>
+                <div class="col-sm-8">
+                    <ul>
+                        <li ng-repeat="username in selectedUsersNames">
+                            {{username}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-6">
+                        <div class="input-group">
+                            <input id="searchUser" type="text" ng-model="selected" placeholder="Add Users" uib-typeahead="u as u.name for u in users | filter:$viewValue | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="customTemplateUser.html" class="form-control">
+                            <div class="input-group-btn">
+                                <button ng-click="getfocus()" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                        <br><a class="btn btn-info btn-sm" ng-click="postNewGroup()" >Create New Group</a>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/ng-template" id="customTemplateUser.html">
+            <a>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <img ng-src="assets/images/true.jpg" width="50">
+                    </div>
+                    <div class="col-xs-8">
+                        <strong><span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span></strong>
+                        <br>
+                        <span><i>{{match.model.email}} {{match.model.gender}}</i></span>
+                    </div>
+                </div>
+            </a>
+        </script>
+    </div>
+</div>
+
+<ul class="list-group user-list">
+    <li class="list-group-item" ng-repeat="user in users">
+        <div class="user-info">
+            <p>{{user}}</p>
+            <p>{{user.name}}</p>
+            <p>{{user.email}}</p>
+            <p>{{user.role}}</p>
+            <p>{{user.password}}</p>
+            <p>{{user.provider}}</p>
+            <p>{{user.salt}}</p>
+            <p>{{user.gender}}</p>
+            <p>{{user.score}}</p>
+            <ul class="list-group user-list">
+                <li ng-repeat="group in user.groups">
+                    group.
+                </li>
+            </ul>
+        </div>
+    </li>
+</ul>

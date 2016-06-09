@@ -1,0 +1,69 @@
+<div ng-include="'components/header/header.html'"></div>
+<div class="container">
+    <div class="row row-content">
+        <div class="col-xs-12">
+            <h3>Send us your Feedback</h3>
+        </div>
+        <div class="col-xs-12">
+            <form class="form-horizontal" role="form" name="feedbackForm" ng-submit="sendFeedback()" novalidate>
+                <div class="form-group" ng-class="{ 'has-error' : feedbackForm.subject.$error.required && !feedbackForm.subject.$pristine }">
+                    <div class="col-xs-12">
+                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Enter a Subject"
+                               ng-model="newFeedback.subject" required>
+                        <span ng-show="feedbackForm.subject.$error.required && !feedbackForm.subject.$pristine" class="help-block">
+                            please fill the subject.
+                        </span>
+                    </div>
+                </div>  
+                <div class="form-group" ng-class="{ 'has-error' : feedbackForm.feedbackBody.$error.required && !feedbackForm.feedbackBody.$pristine }">
+                    <div class="col-xs-12">
+                        <textarea id="feedbackBody" name="feedbackBody" class="form-control" rows="12" ng-model="newFeedback.feedbackBody" placeholder="Help us Improve" required></textarea>
+                        <span ng-show="feedbackForm.feedbackBody.$error.required && !feedbackForm.feedbackBody.$pristine" class="help-block">
+                            please write to us.
+                        </span>
+                    </div>
+                </div>
+                <!--
+                <div hidden>
+                    <label ng-model="newFeedback.user">hi</label>
+                </div>
+                -->
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary" ng-disabled="feedbackForm.$invalid">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    Current User: ---- {{currentUser()._id}} ----
+
+    <div ng-show="isAdmin()">
+        <h5>Feedbacks:</h5>
+        <ul>
+            <li ng-repeat="fb in feedbacks">
+                <p>Subject: {{fb.subject}}</p>
+                <p>Body: {{fb.feedbackBody}}</p>
+                <p>User: {{fb.author.name}}</p>
+                <p>Date: {{fb.date | date:'medium'}}</p>
+                <a ng-click="delete($index)" class="trash btn">Delete<span class="fa fa-trash fa-2x"></span></a>
+            </li>
+        </ul>
+    </div>
+    <ul class="list-group user-list">
+        <li class="list-group-item" ng-repeat="user in users">
+            <div class="user-info">
+                <p>{{user}}</p>
+                <p>{{user.name}}</p>
+                <p>{{user.email}}</p>
+                <p>{{user.role}}</p>
+                <p>{{user.password}}</p>
+                <p>{{user.provider}}</p>
+                <p>{{user.salt}}</p>
+                <p>{{user.gender}}</p>
+                <p>{{user.score}}</p>
+            </div>
+        </li>
+    </ul>
+</div>
