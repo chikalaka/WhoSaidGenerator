@@ -6,27 +6,42 @@ angular.module('whoSaidApp')
     $scope.header = 'Game header';
     $scope.isAdmin = Auth.isAdmin;
     $scope.currentUser = Auth.getCurrentUser;
-    
-    
-/*
-    $http.get('/api/groups')
+
+    $http.get('/api/users/12345')
         .success(function(data) {
-        $scope.groups = data;
+        $scope.users = data;
     })
         .error(function(err) {
-        alert('Error! Something went wrong');
-    });
-
-    $scope.sendFeedback = function() {
-
-        $http.post('/api/feedbacks', $scope.newFeedback)
-            .success(function(){
-            $scope.newFeedback = {};
-            $scope.feedbackForm.$setPristine();
-        })
-            .error(function(err){
-            alert('Error! Something went wrong');
-        });
-    };*/
+        alert('Error! Something went wrong - get');
+    })
     
+    var len = Auth.getCurrentUser().groups.length;
+
+    function Create2DArray(rows) {
+        var arr = [];
+
+        for (var i=0;i<rows;i++) {
+            arr[i] = [];
+        }
+
+        return arr;
+    }
+
+    $scope.selectedWho = Create2DArray(len);
+    $scope.selectedWhom = Create2DArray(len);
+
+    $scope.guess = function(parentIndex, index) {
+        $scope.selectedWho[parentIndex][index] = "";
+        $scope.selectedWhom[parentIndex][index] = "";
+        
+        //parentIndex - integer indicate which group the user chose in the array: Auth.getCurrentUser().groups
+        //index - integer indicate which group the user chose in the array: Auth.getCurrentUser().groups[parentIndex] (inside this array there are phrases)
+        
+        //Doron - here you need to add the code for:
+        //popup
+        //check if user guessed right
+        //update his score if needed
+        //and so on
+    };
+
 });
