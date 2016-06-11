@@ -1,14 +1,47 @@
+<!--
 <div ng-include="'components/header/header.html'"></div>
 
-<div style="height: 305px">
+<div style="background: purple; ">
     <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
         <uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
             <img ng-src="{{slide.image}}" style="margin:auto;">
-            <div class="carousel-caption">
-                <h4>Slide {{slide.id}}</h4>
-                <p>{{slide.text}}</p>
+            <div class="">
+                <br>
+                <p>{{slide.p1}}</p><br>
+                <p>{{slide.p2}}</p><br>
+                <p>{{slide.p3}}</p><br><br><br>
             </div>
         </uib-slide>
     </uib-carousel>
 </div>
+-->
+<div ng-include="'components/header/header.html'"></div>
 
+<div style="background: purple; ">
+    <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <uib-slide>
+            <div>
+                <br>
+                <p>1. Create groups containing your circle of friends.</p><br>
+                <p>2. Post a sentence that you used to hear your friends say to one another.</p><br>
+                <p>3. Don't forget to post "Who Said" to "Whom" !</p><br><br><br>
+            </div>
+        </uib-slide>
+        <uib-slide>
+            <div>
+                <br>
+                <p><span class="glyphicon glyphicon-heart"></span></p><br>
+                <p>4. Get extra points for posting a sentence.</p><br>
+                <p>5. Wait for your friends to start guessing.</p><br><br><br>
+            </div>
+        </uib-slide>
+        <uib-slide>
+            <div>
+                <br>
+                <p><span class="glyphicon glyphicon-glass"></span></p><br>
+                <p>6. Go throught your wall and try guessing your friends posts to score more points.</p><br>
+                <button class="btn btn-primary btn-lg" data-animation="animated lightSpeedIn" ui-sref="game"><Strong>Start Palying !!!</Strong></button><br><br><br>
+            </div>
+        </uib-slide>
+    </uib-carousel>
+</div>
