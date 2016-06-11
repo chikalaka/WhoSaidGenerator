@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('whoSaidApp')
-  .config(function ($stateProvider) {
+    .config(function ($stateProvider) {
     $stateProvider
-      .state('welcome', {
-        url: '/welcome',
-        template: '<welcome></welcome>'
-      });
-  });
+        .state('welcome', {
+        url: '/',
+        templateUrl: 'app/welcome/welcome.html',
+        controller: 'WelcomeController'
+    });
+});

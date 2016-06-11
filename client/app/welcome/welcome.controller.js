@@ -1,16 +1,12 @@
 'use strict';
-(function(){
-
-class WelcomeComponent {
-  constructor() {
-    this.message = 'Hello';
-  }
-}
 
 angular.module('whoSaidApp')
-  .component('welcome', {
-    templateUrl: 'app/welcome/welcome.html',
-    controller: WelcomeComponent
-  });
 
-})();
+    .controller('WelcomeController', function ($scope, $http, Auth) {
+    $scope.header = 'welcome header';
+    $scope.isAdmin = Auth.isAdmin;
+    $scope.currentUser = Auth.getCurrentUser;
+
+   
+
+});

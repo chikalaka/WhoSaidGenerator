@@ -19,8 +19,8 @@ class LoginController {
           password: this.user.password
         })
         .then(() => {
-          // Logged in, redirect to home
-          this.$state.go('main');
+          // Logged in, redirect to home = game
+          this.$state.go('game');
         })
         .catch(err => {
           this.errors.other = err.message;

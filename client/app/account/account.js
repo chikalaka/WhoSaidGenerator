@@ -10,10 +10,10 @@ angular.module('whoSaidApp')
       })
       .state('logout', {
         url: '/logout?referrer',
-        referrer: 'main',
+        referrer: 'welcome',
         template: '',
         controller: function($state, Auth) {
-          var referrer = $state.params.referrer || $state.current.referrer || 'main';
+          var referrer = $state.params.referrer || $state.current.referrer || 'welcome';
           Auth.logout();
           $state.go(referrer);
         }
