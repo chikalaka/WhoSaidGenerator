@@ -6,29 +6,15 @@ angular.module('whoSaidApp')
     $scope.header = 'create group header';
     $scope.isAdmin = Auth.isAdmin;
 
-
-    //test
-    /*
-    for (var j=0;j<3;j++){
-        (function() {
-
-
-            alert();
-
-            return;
-        })();
-    }*/
-
-
-
-
-    // end of test
-
-    //$scope.users = User.query(); // NO need, delete when done
-
     $http.get('/api/users/12345')
         .success(function(data) {
         $scope.users = data;
+
+        for(var i=0;i<$scope.users.length;i++){
+            if($scope.users[i]._id == Auth.getCurrentUser()._id){
+                $scope.users.splice(i, 1);
+            }
+        }
     })
         .error(function(err) {
         alert('Error! Something went wrong - get');
@@ -47,32 +33,39 @@ angular.module('whoSaidApp')
         $http.post('/api/groups', $scope.newGroup)
             .success(function(createdGroup){
 
+            // add group to current user
+            $http.get('/api/users/12345/' + Auth.getCurrentUser()._id)
+                .success(function(data) {
+
+                var groups = data;
+                groups.groups.push(createdGroup._id);
+
+                $http.put('/api/users/12345/' + Auth.getCurrentUser()._id, groups)
+                    .success(function(){
+                })
+                    .error(function(err){
+                    alert('Error! Something went wrong - put');
+                });
+            })
+                .error(function(err) {
+                alert('Error! Something went wrong - get users groups');
+            })
+
+            // add group to all users selected
             var len = $scope.newGroup.users.length;
-            //var i =0;
 
             function myFunction(i){
                 $http.get('/api/users/12345/' + $scope.newGroup.users[i])
                     .success(function(data) {
 
-                    //alert($scope.newGroup.users[i]._id);
-
                     var groups = data;
                     groups.groups.push(createdGroup._id);
-                    alert(groups)
+
                     $http.put('/api/users/12345/' + $scope.newGroup.users[i], groups)
                         .success(function(){
-                        alert('weheeee');
-
-                        alert(i);
-                        //alert(len);
-                        //i++;
-                        //if(i < len-1){
-                        //    return;
-                        //} 
                     })
                         .error(function(err){
                         alert('Error! Something went wrong - put');
-                        alert(err);
                     });
                 })
                     .error(function(err) {
@@ -80,14 +73,10 @@ angular.module('whoSaidApp')
                 })
             }
 
-
-
             for(var i=0;i<len;i++){
 
                 myFunction(i);
             }
-
-
 
         })
             .error(function(err){
@@ -96,27 +85,27 @@ angular.module('whoSaidApp')
     }
 
     $scope.selectedUsersNames = [];
-    //$scope.newGroup.users = [];
-    //$scope.newGroup.name = 'hello';
+
     $scope.newGroup = new Object({
         name: '',
         users: []
     });
 
+    // to add current user
+    $scope.newGroup.users.push(Auth.getCurrentUser()._id);
+
     $scope.onSelectPart = function($item, $model, $label, $event){
         $event: {
-            /*
-            alert('model: ' + $model);
-            alert('model._id: ' + $model._id);
-            alert('label: ' + $label);
-            alert('label._id: ' + $label._id);
-            alert('item: ' + $item);
-            alert('item._id: ' + $item._id);
-            */
             $scope.selectedUsersNames.push($label);
             $scope.newGroup.users.push($item._id);
 
             $scope.selected = "";
+
+            for(var i=0;i<$scope.users.length;i++){
+                if($scope.users[i]._id == $item._id){
+                    $scope.users.splice(i, 1);
+                }
+            }
         }
     }
 
