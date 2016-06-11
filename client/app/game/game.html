@@ -18,11 +18,11 @@
                     </div>
                     <form class="navbar-form" role="search">
                         <div class="form-group">
-                            <input autocomplete="off" type="text" ng-model="selectedWho[$parent.$index][$index]" placeholder="Who Said?" uib-typeahead="u as u.name for u in users | filter:$viewValue | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="customTemplateUser.html" class="form-control">
+                            <input autocomplete="off" type="text" ng-model="selectedWho[$parent.$index][$index]" placeholder="Who Said?" uib-typeahead="u as u.name for u in users | filter:$viewValue | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateUser.html" class="form-control">
                         </div>
                         <span><strong>To </strong></span>
                         <div class="form-group">
-                            <input autocomplete="off" type="text" ng-model="selectedWhom[$parent.$index][$index]" placeholder="Whom?" uib-typeahead="u as u.name for u in users | filter:$viewValue | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="customTemplateUser.html" class="form-control">
+                            <input autocomplete="off" type="text" ng-model="selectedWhom[$parent.$index][$index]" placeholder="Whom?" uib-typeahead="u as u.name for u in users | filter:$viewValue | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateUser.html" class="form-control">
                         </div>
                         <span><a class="btn btn-info btn-sm" ng-click="guess($parent.$index, $index)">Submit!</a></span>
                     </form>
@@ -31,24 +31,3 @@
         </div>
     </div>
 </div>
-
-<div ng-repeat="group in currentUser().groups">
-    <div ng-repeat="phrase in group.phrases | orderBy: 'dateTime': true">
-        {{group.phrase.selectedWho}}
-    </div>
-</div>
-
-<script type="text/ng-template" id="customTemplateUser.html">
-    <a>
-        <div class="row">
-            <div class="col-xs-4">
-                <img ng-src="assets/images/true.jpg" width="50">
-            </div>
-            <div class="col-xs-8">
-                <strong><span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span></strong>
-                <br>
-                <span><i>{{match.model.email}}</i></span>
-            </div>
-        </div>
-    </a>
-</script>

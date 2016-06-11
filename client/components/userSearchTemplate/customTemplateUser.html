@@ -1,0 +1,12 @@
+<a>
+    <div class="row">
+        <div class="col-xs-4">
+            <img ng-src="assets/images/{{match.model.gender}}.png" width="50">
+        </div>
+        <div class="col-xs-8">
+            <strong><span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span></strong>
+            <br>
+            <span><i>{{match.model.email}}</i></span>
+        </div>
+    </div>
+</a>
