@@ -6,6 +6,8 @@ class SignupController {
   constructor(Auth, $state) {
       this.Auth = Auth;
       this.$state = $state;
+      this.user = {}
+      this.user.gender = 'true';
     }
     //start-non-standard
 
@@ -16,6 +18,7 @@ class SignupController {
     if (form.$valid) {
       this.Auth.createUser({
           name: this.user.name,
+          gender: this.user.gender,
           email: this.user.email,
           password: this.user.password
         })

@@ -1,28 +1,18 @@
 <div ng-include="'components/header/header.html'"></div>
 <div>
-    <img src="assets/images/{{user().gender}}.jpg" alt="Gender" id="imgprop"/>
+    <img src="assets/images/{{user().gender}}.png" alt="Gender" id="imgprop"/><br><br><br>
     <div class="form-group" id="marginprofile">
-        <label for="emailid" class="col-sm-2 control-label" style ="margin-left: 20px;">Email</label>
+        <label class="col-sm-2 control-label" style ="margin-left: 20px;">Email</label>
         <label>{{user().email}}</label>
-        <div class="col-sm-4">
-            <input type="email" class="form-control" id="widthprofile" name="emailid" placeholder="Email">
-        </div>
     </div>
     <br>
     <div class="form-group" id="marginprofile">
-        <label for="emailid" class="col-sm-2 control-label" style ="margin-left: 20px;">First Name</label>
+        <label class="col-sm-2 control-label" style ="margin-left: 20px;">Name</label>
         <label>{{user().name}}</label>
-        <div class="col-sm-4">
-            <input type="First Name" class="form-control" id="widthprofile" name="First Name" placeholder="First Name">
-        </div>
     </div>
     <br>
     <div class="form-group" id="marginprofile">
-        <label for="emailid" class="col-sm-2 control-label" style ="margin-left: 20px;">Score</label>
+        <label class="col-sm-2 control-label" style ="margin-left: 20px;">Score</label>
         <label>{{user().score}}</label>
-        <div class="col-sm-4">
-            <input type="Last Name" class="form-control" id="widthprofile" name="Last Name" placeholder="Last Name">
-        </div>
     </div>
-
 </div>
