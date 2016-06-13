@@ -34,7 +34,7 @@
         
         <div ng-repeat="group in currentUser().groups">
             <div ng-repeat="phrase in group.phrases | orderBy: 'dateTime': true">
-                <div class="hr-border">
+                <div class="hr-border llinee">
                     <div class="container" id="groupnamepost">
                         <div class="col-xs-12" id="groupheader" >
                             <h3 id="htp">{{group.name}}</h3>
@@ -43,7 +43,7 @@
                     <div class="col-xs-12" >
                         <label for="emailid" class="form-control" id ="wallwidth">{{phrase.sentence}}</label>
                     </div>
-                    <form class="navbar-form" role="search">
+                    <form class="navbar-form " role="search">
                         <div class="form-group">
                             <input autocomplete="off" type="text" ng-model="selectedWho[$parent.$index][$index]" placeholder="Who Said?" uib-typeahead="u as u.name for u in users | filter:$viewValue | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateUser.html" class="form-control">
                         </div>
