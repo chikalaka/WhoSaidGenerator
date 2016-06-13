@@ -1,7 +1,8 @@
 .row-footer{
     height: 200px;
-    background-color:darkgrey;
+    background-color:#283d51;
     margin:0px;
     padding: 20px 0px 20px 0px;
     margin-top: 50px;
+    color:aliceblue;
 }

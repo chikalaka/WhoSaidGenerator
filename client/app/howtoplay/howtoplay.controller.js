@@ -3,7 +3,7 @@
 angular.module('whoSaidApp')
 
     .controller('HtpController', function ($scope, $http, Auth) {
-    $scope.header = 'htplayy header';
+    $scope.header = 'How To Play ?';
     $scope.isAdmin = Auth.isAdmin;
 
     $scope.myInterval = 5000;

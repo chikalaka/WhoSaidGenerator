@@ -1,18 +1,19 @@
 <div ng-include="'components/header/header.html'"></div>
 <div>
-    <img src="assets/images/{{user().gender}}.png" alt="Gender" id="imgprop"/><br><br><br>
+    <img class= "im" src="assets/images/{{user().gender}}.png" alt="Gender" id="imgprop"/><br><br><br>
+    
     <div class="form-group" id="marginprofile">
-        <label class="col-sm-2 control-label" style ="margin-left: 20px;">Email</label>
-        <label>{{user().email}}</label>
+        <label class="col-sm-2 control-label ll">Email: </label>
+        <label class="lli" >{{user().email}}</label>
+    </div>
+    <br>
+    <div class="form-group marginprofile">
+        <label class="col-sm-2 control-label ll" >Name: </label>
+        <label class="lli" >{{user().name}}</label>
     </div>
     <br>
     <div class="form-group" id="marginprofile">
-        <label class="col-sm-2 control-label" style ="margin-left: 20px;">Name</label>
-        <label>{{user().name}}</label>
-    </div>
-    <br>
-    <div class="form-group" id="marginprofile">
-        <label class="col-sm-2 control-label" style ="margin-left: 20px;">Score</label>
-        <label>{{user().score}}</label>
+        <label class="col-sm-2 control-label ll" >Score: </label>
+        <label class="lli" >{{user().score}}</label>
     </div>
 </div>

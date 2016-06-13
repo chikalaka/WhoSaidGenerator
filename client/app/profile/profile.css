@@ -1,0 +1,18 @@
+.marginprofile{
+    margin-top: 30px;
+    
+}
+.im{
+    margin-top: 30px;
+    margin-left: 150px;
+     border: 5px solid navy;
+}
+.ll{
+    font-size: 20px;
+     margin-left: 50px;
+}
+.lli{
+    font-size: 15px;
+    border-bottom: 2px solid navy;
+    margin-left: auto;
+}

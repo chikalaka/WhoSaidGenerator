@@ -1,4 +1,9 @@
 .test {
     font-size: 30px;
-    background: grey;
+    background: #6699CC;
+    
+}
+.tex{
+    margin-left: 100px;
+    color: aliceblue;
 }

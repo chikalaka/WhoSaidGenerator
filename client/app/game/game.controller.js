@@ -3,7 +3,7 @@
 angular.module('whoSaidApp')
 
     .controller('GameController', function ($scope, $http, Auth) {
-    $scope.header = 'Game header';
+    $scope.header = 'Who Said ?';
     $scope.isAdmin = Auth.isAdmin;
     $scope.currentUser = Auth.getCurrentUser;
 

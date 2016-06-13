@@ -3,7 +3,7 @@
 angular.module('whoSaidApp')
 
     .controller('ContactusController', function ($scope, $http, Auth, User) {
-    $scope.header = 'Contact Us header';
+    $scope.header = 'Contact Us';
     $scope.isAdmin = Auth.isAdmin;
     $scope.currentUser = Auth.getCurrentUser;
     

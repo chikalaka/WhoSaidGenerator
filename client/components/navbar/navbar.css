@@ -1,10 +1,14 @@
 .dark-blue {
-    background: #324463;
+    background: #3d5b7a;
 }
 
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #fff;
-  background-color: #253248;
+  color:aliceblue;
+  background-color: #3d5b7a;
+}
+.llog{
+    padding-top:0px;
+    
 }

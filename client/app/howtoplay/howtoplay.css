@@ -57,3 +57,25 @@
 .carousel-caption button {
 	animation-delay: 3s;
 }*/
+
+#main-container {
+  padding: 0px 0px;
+   
+    width: auto;
+    
+}
+
+.carousel .item {
+	min-height: 450px; 
+	height: 100%;
+	width:100%; 
+}
+
+.carousel .icon-container {
+	display: inline-block;
+	font-size: 25px;
+	line-height: 25px;
+	padding: 1em;
+	text-align: center;
+	border-radius: 50%;
+}

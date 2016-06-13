@@ -3,7 +3,7 @@
 angular.module('whoSaidApp')
 
     .controller('CreateGroupController', function ($scope, $http, Auth/*, User*/) {
-    $scope.header = 'create group header';
+    $scope.header = 'Create Group';
     $scope.isAdmin = Auth.isAdmin;
 
     $http.get('/api/users/12345')

@@ -3,7 +3,7 @@
 angular.module('whoSaidApp')
 
     .controller('FaqController', function ($scope, $http, Auth) {
-    $scope.header = 'FAQ header';
+    $scope.header = 'FAQ';
     $scope.isAdmin = Auth.isAdmin;
 
     $scope.oneAtATime = false;
