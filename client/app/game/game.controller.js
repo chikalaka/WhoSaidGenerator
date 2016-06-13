@@ -6,6 +6,7 @@ angular.module('whoSaidApp')
     $scope.header = 'Who Said ?';
     $scope.isAdmin = Auth.isAdmin;
     $scope.currentUser = Auth.getCurrentUser;
+    $scope.isCollapsed = 'false';
 
     $http.get('/api/users/12345')
         .success(function(data) {

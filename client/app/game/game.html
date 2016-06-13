@@ -5,6 +5,33 @@
         <div ng-include="'components/groups/groups.html'"></div>
     </div>
     <div class="col-xs-9">
+        
+        <button type="button" class="btn btn-primary btn-lg tt" ng-click="isCollapsed = !isCollapsed">Post a Sentence</button>
+	<hr>
+	<div uib-collapse="isCollapsed">
+        <div	class="form-group" >	
+            <div>
+                <div	class="well" >
+                    
+                <input type="GroupNAme" class="form-control" name="GroupNAme" placeholder="Search Group Name" id="insertwidth">
+                    
+                <input type="Sentence" class="form-control" name="Sentence" placeholder="Sentence that will be displayed" id="insertwidth">
+                
+                <form class="navbar-form" role="search">
+                    <div class="form-group">
+                           <input type="who Name" class="form-control" name="who Name" placeholder="Who Said?" id="insertwidth">
+                    </div>
+                    <span><strong>To</strong></span>
+                    <div class="form-group">
+                        <input type="whom Name" class="form-control" name="whom Name" placeholder="Whom" id="insertwidth">
+                    </div>
+                    <span><a class="btn btn-primary btn-sm" href="wall#"><strong>Post it!</strong></a></span>
+                </form>
+                 </div>	
+            </div>	
+        </div>
+	</div>
+        
         <div ng-repeat="group in currentUser().groups">
             <div ng-repeat="phrase in group.phrases | orderBy: 'dateTime': true">
                 <div class="hr-border">
