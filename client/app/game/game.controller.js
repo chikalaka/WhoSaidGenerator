@@ -7,6 +7,10 @@ angular.module('whoSaidApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.currentUser = Auth.getCurrentUser;
     $scope.isCollapsed = 'false';
+    $scope.currentGroups = Auth.getCurrentUser().groups;
+    /*$scope.groupSelected;
+    $scope.selectedWhoPost;
+    $scope.selectedWhomPost;*/
 
     $http.get('/api/users/12345')
         .success(function(data) {
@@ -16,7 +20,7 @@ angular.module('whoSaidApp')
         alert('Error! Something went wrong - get');
     })
     
-    var len = Auth.getCurrentUser().groups.length;
+    var len = $scope.currentGroups.length;
 
     function Create2DArray(rows) {
         var arr = [];
@@ -35,8 +39,8 @@ angular.module('whoSaidApp')
         $scope.selectedWho[parentIndex][index] = "";
         $scope.selectedWhom[parentIndex][index] = "";
         
-        //parentIndex - integer indicate which group the user chose in the array: Auth.getCurrentUser().groups
-        //index - integer indicate which group the user chose in the array: Auth.getCurrentUser().groups[parentIndex] (inside this array there are phrases)
+        //parentIndex - integer indicate which group the user chose in the array: $scope.currentGroups
+        //index - integer indicate which group the user chose in the array: $scope.currentGroups[parentIndex] (inside this array there are phrases)
         
         //Doron - here you need to add the code for:
         //popup
