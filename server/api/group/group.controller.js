@@ -12,6 +12,25 @@
 import _ from 'lodash';
 import Group from './group.model';
 
+//insert phrase to group- need to change!!!
+export function addPhraseToGroup(req, res, next) {
+  var gruopId = req.params.id;
+  var newPhrases = req.body.phrases;
+
+  return groups.findById(gruopId).exec()
+    .then(group => {
+      
+    group.phrases = newPhrases;
+    return group.save()
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch();
+
+    });
+}
+//end of custom function
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {

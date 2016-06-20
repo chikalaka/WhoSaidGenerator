@@ -13,9 +13,9 @@
                 <div>
                     <div	class="well" >
 
-                        <input autocomplete="off" type="text" ng-model="groupSelected.name" placeholder="add to group" uib-typeahead="g as g.name for g in currentGroups | filter:groupSelected:strict | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateGroup.html" class="form-control">
+                        <input autocomplete="off" type="text" ng-model="groupSelected" placeholder="add to group" uib-typeahead="g as g.name for g in currentGroups | filter:groupSelected:strict | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateGroup.html" class="form-control">
 
-                        <input type="text" class="form-control" name="Sentence" placeholder="Sentence that will be displayed" id="insertwidth">
+                        <input type="text" ng-model="sentence" class="form-control" name="Sentence" placeholder="Sentence that will be displayed" id="insertwidth">
 
                         <form class="navbar-form" role="search">
                             <div class="form-group">

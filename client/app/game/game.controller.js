@@ -36,27 +36,28 @@ angular.module('whoSaidApp')
     $scope.selectedWhom = Create2DArray(len);
     
     //change to sentece
-    /*
+    
     $scope.postSentence = function(){
         $scope.newPhrase= {};
-        $scope.newPhrase.group= $scope.groupSelected.name;
-        
-        
-        
-        $scope.groupSelected.name, $scope.selectedWhoPost,$scope.selectedWhomPost}
+        $scope.newPhrase.author= Auth.getCurrentUser;
+        $scope.newPhrase.sentence= $scope.sentence;
+        //$scope.newPhrase.group=$scope.groupSelected;
+        $scope.newPhrase.oneSaid=$scope.selectedWhoPost;
+        $scope.newPhrase.Said=$scope.selectedWhomPost;
         //var parameter = JSON.stringify($scope.newGroup);
-
-        $http.post('/api/groups', $scope.newGroup)
-            .success(function(createdGroup){
-
-            // add group to current user
-            $http.get('/api/users/12345/' + Auth.getCurrentUser()._id)
+        
+       /*
+        $http.post('/api/groups:id', $scope.newPhrase)
+            .success(function(createdPhrase){
+*/
+            // add phrase to current group
+            $http.get('/api/groups/' + $scope.groupSelected._id)
                 .success(function(data) {
 
-                var groups = data;
-                groups.groups.push(createdGroup._id);
-
-                $http.put('/api/users/12345/' + Auth.getCurrentUser()._id, groups)
+                var group = data;
+                group.phrases.push($scope.newPhrase);
+                console.log(group);
+                $http.put('/api/groups/addphrase/' + group._id, group)
                     .success(function(){
                 })
                     .error(function(err){
@@ -68,6 +69,7 @@ angular.module('whoSaidApp')
             })
 
             // add group to all users selected
+            /*
             var len = $scope.newGroup.users.length;
 
             function myFunction(i){
@@ -93,13 +95,15 @@ angular.module('whoSaidApp')
 
                 myFunction(i);
             }
-
+            */
+/*
         })
             .error(function(err){
             alert('Error! Something went wrong - post');
         });
+        */
     }
-    */
+    //end of sentence
 
     $scope.selectedUsersNames = [];
 
