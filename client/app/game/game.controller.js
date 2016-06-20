@@ -34,84 +34,8 @@ angular.module('whoSaidApp')
 
     $scope.selectedWho = Create2DArray(len);
     $scope.selectedWhom = Create2DArray(len);
-    
-    //change to sentece
-    /*
-    $scope.postSentence = function(){
-        $scope.newPhrase= {};
-        $scope.newPhrase.group= $scope.groupSelected.name;
-        
-        
-        
-        $scope.groupSelected.name, $scope.selectedWhoPost,$scope.selectedWhomPost}
-        //var parameter = JSON.stringify($scope.newGroup);
 
-        $http.post('/api/groups', $scope.newGroup)
-            .success(function(createdGroup){
-
-            // add group to current user
-            $http.get('/api/users/12345/' + Auth.getCurrentUser()._id)
-                .success(function(data) {
-
-                var groups = data;
-                groups.groups.push(createdGroup._id);
-
-                $http.put('/api/users/12345/' + Auth.getCurrentUser()._id, groups)
-                    .success(function(){
-                })
-                    .error(function(err){
-                    alert('Error! Something went wrong - put');
-                });
-            })
-                .error(function(err) {
-                alert('Error! Something went wrong - get users groups');
-            })
-
-            // add group to all users selected
-            var len = $scope.newGroup.users.length;
-
-            function myFunction(i){
-                $http.get('/api/users/12345/' + $scope.newGroup.users[i])
-                    .success(function(data) {
-
-                    var groups = data;
-                    groups.groups.push(createdGroup._id);
-
-                    $http.put('/api/users/12345/' + $scope.newGroup.users[i], groups)
-                        .success(function(){
-                    })
-                        .error(function(err){
-                        alert('Error! Something went wrong - put');
-                    });
-                })
-                    .error(function(err) {
-                    alert('Error! Something went wrong - get users groups');
-                })
-            }
-
-            for(var i=0;i<len;i++){
-
-                myFunction(i);
-            }
-
-        })
-            .error(function(err){
-            alert('Error! Something went wrong - post');
-        });
-    }
-    */
-
-    $scope.selectedUsersNames = [];
-
-    $scope.newGroup = new Object({
-        name: '',
-        users: []
-    });
-    
-    
-}
     $scope.guess = function(parentIndex, index) {
-        
         $scope.selectedWho[parentIndex][index] = "";
         $scope.selectedWhom[parentIndex][index] = "";
         
