@@ -19,7 +19,7 @@ angular.module('whoSaidApp')
         .error(function(err) {
         alert('Error! Something went wrong - get');
     })
-    
+    /*hello*/
     var len = $scope.currentGroups.length;
 
     function Create2DArray(rows) {
