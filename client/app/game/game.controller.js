@@ -5,7 +5,7 @@ angular.module('whoSaidApp')
     .controller('GameController', function ($scope, $http, Auth) {
     $scope.header = 'Who Said ?';
     $scope.isAdmin = Auth.isAdmin;
-    $scope.currentUser = Auth.getCurrentUser;
+    $scope.currentUser = Auth.getCurrentUser();
     $scope.isCollapsed = 'false';
     $scope.currentGroups = Auth.getCurrentUser().groups;
     /*$scope.groupSelected;
@@ -35,30 +35,44 @@ angular.module('whoSaidApp')
     $scope.selectedWho = Create2DArray(len);
     $scope.selectedWhom = Create2DArray(len);
     
-    //change to sentece
+    //post a new sentence
     
     $scope.postSentence = function(){
+        console.log("hello");
+        //create a new phrase object - get id
+        $scope.newPhrase = new Object({
+        author: Auth.getCurrentUser()._id,
+        sentence: $scope.sentence,
+        oneSaid: $scope.selectedWhoPostid,
+        said:$scope.selectedWhomPostid
+    });
+        console.log($scope.newPhrase);
+        
+        /*
         $scope.newPhrase= {};
         $scope.newPhrase.author= Auth.getCurrentUser;
         $scope.newPhrase.sentence= $scope.sentence;
         //$scope.newPhrase.group=$scope.groupSelected;
-        $scope.newPhrase.oneSaid=$scope.selectedWhoPost;
-        $scope.newPhrase.Said=$scope.selectedWhomPost;
+        $scope.newPhrase.oneSaid=$scope.selectedWhoPostid;
+        $scope.newPhrase.Said=$scope.selectedWhomPostid;
+        /*
         //var parameter = JSON.stringify($scope.newGroup);
-        
+        //hello test
        /*
         $http.post('/api/groups:id', $scope.newPhrase)
             .success(function(createdPhrase){
 */
             // add phrase to current group
-            $http.get('/api/groups/' + $scope.groupSelected._id)
+            $http.get('/api/groups/' + $scope.groupSelectedId)
+            
                 .success(function(data) {
-
                 var group = data;
-                group.phrases.push($scope.newPhrase);
+                //group.phrases.push($scope.newPhrase);
                 console.log(group);
+                
                 $http.put('/api/groups/addphrase/' + group._id, group)
                     .success(function(){
+                    console.log("sucess put phrase")
                 })
                     .error(function(err){
                     alert('Error! Something went wrong - put');
@@ -68,6 +82,14 @@ angular.module('whoSaidApp')
                 alert('Error! Something went wrong - get users groups');
             })
 
+                
+                
+                
+                
+                
+                
+                
+                
             // add group to all users selected
             /*
             var len = $scope.newGroup.users.length;
@@ -105,15 +127,37 @@ angular.module('whoSaidApp')
     }
     //end of sentence
 
-    $scope.selectedUsersNames = [];
-
-    $scope.newGroup = new Object({
+    //$scope.selectedUsersNames = [];
+/*
+    $scope.newPhrase = new Object({
         name: '',
         users: []
     });
+    */
     
-    
-}
+   // -------------//
+    //save the chosen id in $scope.XXXXId
+     $scope.onSelectGroup = function($item, $model, $label, $event){
+        $event: {
+            $scope.groupSelectedId = $item._id;
+           
+        }
+    }
+          $scope.onSelectWho = function($item, $model, $label, $event){
+        $event: {
+            $scope.selectedWhoPostid = $item._id;
+           
+        }
+    }
+          $scope.onSelectWhom = function($item, $model, $label, $event){
+        $event: {
+            $scope.selectedWhomPostid = $item._id;
+           
+        }
+    }
+   // -------------//
+          
+          
     $scope.guess = function(parentIndex, index) {
         
         $scope.selectedWho[parentIndex][index] = "";
