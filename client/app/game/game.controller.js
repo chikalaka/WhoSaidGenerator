@@ -70,7 +70,7 @@ angular.module('whoSaidApp')
                 //group.phrases.push($scope.newPhrase);
                 console.log(group);
                 
-                $http.put('/api/groups/addphrase/' + group._id, group)
+                $http.put('/api/groups/' + group._id, $scope.newPhrase)
                     .success(function(){
                     console.log("sucess put phrase")
                 })
