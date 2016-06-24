@@ -38,6 +38,7 @@
                 </div>	
             </div>
         </div>
+        <p>{{currentGroups}}</p>
 
         <div ng-repeat="group in currentGroups">
             <div ng-repeat="phrase in group.phrases | orderBy: 'dateTime': true">
@@ -58,6 +59,7 @@
                         <div class="form-group">
                             <input autocomplete="off" type="text" ng-model="selectedWhom[$parent.$index][$index]" placeholder="Whom?" uib-typeahead="u as u.name for u in users | filter:$viewValue | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateUser.html" class="form-control">
                         </div>
+                        <p>{{selectedWhom}}</p>
                         <span><a class="btn btn-info btn-sm" ng-click="guess($parent.$index, $index)">Submit!</a></span>
                     </form>
                 </div>

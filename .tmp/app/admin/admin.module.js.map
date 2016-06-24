@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../client/app/admin/admin.module.js"],"names":[],"mappings":"AAAA;;AAEA,QAAQ,MAAR,CAAe,kBAAf,EAAmC,CAAC,iBAAD,EAAoB,WAApB,CAAnC","file":"admin.module.js","sourcesContent":["'use strict';\r\n\r\nangular.module('whoSaidApp.admin', ['whoSaidApp.auth', 'ui.router']);\r\n"]}

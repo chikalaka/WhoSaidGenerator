@@ -157,14 +157,35 @@ angular.module('whoSaidApp')
     }
    // -------------//
           
+    $scope.comparePhrases = function(phrase, index) {};
+
+          
           
     $scope.guess = function(parentIndex, index) {
+        // the users guessed
+        $scope.selectedWho[parentIndex][index];
+        $scope.selectedWhom[parentIndex][index];
+//need to be converted to get phrase from db: 
+        index;
+        console.log(parentIndex);
+        console.log(index);
+        var orgPhrase = $scope.newPhrase;
+        if (orgPhrase.oneSaid.id == $scope.selectedWho.id && orgPhrase.said.id == $scope.selectedWhom.id )
+            {}
+        else { alert ("wrong guess!!!")};
         
+        console.log($scope.selectedWho);
+                console.log($scope.selectedWhom);
+
         $scope.selectedWho[parentIndex][index] = "";
+        console.log($scope.selectedWho);
+                console.log($scope.selectedWhom);
+
         $scope.selectedWhom[parentIndex][index] = "";
         
         //parentIndex - integer indicate which group the user chose in the array: $scope.currentGroups
-        //index - integer indicate which group the user chose in the array: $scope.currentGroups[parentIndex] (inside this array there are phrases)
+        //index - phrase index in the group
+        //$scope.currentGroups[parentIndex] (inside this array there are phrases)
         
         //Doron - here you need to add the code for:
         //popup
