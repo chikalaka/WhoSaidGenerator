@@ -158,11 +158,19 @@ angular.module('whoSaidApp')
    // -------------//
           
     $scope.guessedRight = function() {
-        
-        alert("tadaaaaa!!!!!\nYou guessed right!");
+    alert("tadaaaaa!!!!!\nYou guessed right!");
+
+    $http.put('/api/users/addscore/' + Auth.getCurrentUser()._id, 250)
+                    .success(function(){
+                })
+                    .error(function(err){
+                    alert('Error! Something went wrong - put');
+                });
+    }
+/*
         $scope.newScore = 250;
         console.log(Auth.getCurrentUser()._id);
-         $httconsole.log("sucess updated score")p.put('/api/users/' + Auth.getCurrentUser()._id, $scope.newScore)
+         $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.newScore)
                     .success(function(){
                     console.log("sucess updated score")
                 })
@@ -173,7 +181,7 @@ angular.module('whoSaidApp')
         
         
     };
-
+*/
           
           
     $scope.guess = function(parentIndex, index) {

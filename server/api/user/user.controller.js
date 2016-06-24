@@ -169,16 +169,14 @@ export function authCallback(req, res, next) {
   res.redirect('/');
 }
     //update score
-export function updateScore(req, res, next) {
-    var userId = req.params.id;
+export function addScoreToUser(req, res, next) {
+  var userId = req.params.id;
   var newScore = req.body;
-        console.log(newScore);
-        console.log(userId);
 
   return User.findById(userId).exec()
     .then(user => {
       
-    user.score = user.score + newScore ;
+    user.score = 500;
     return user.save()
       .then(() => {
         res.status(204).end();
@@ -186,9 +184,10 @@ export function updateScore(req, res, next) {
       .catch();
 
     });
+}
 
         
        
-}
+
 
     
