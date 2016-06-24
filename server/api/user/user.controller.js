@@ -168,3 +168,27 @@ export function getUserGroups(req, res, next) {
 export function authCallback(req, res, next) {
   res.redirect('/');
 }
+    //update score
+export function updateScore(req, res, next) {
+    var userId = req.params.id;
+  var newScore = req.body;
+        console.log(newScore);
+        console.log(userId);
+
+  return User.findById(userId).exec()
+    .then(user => {
+      
+    user.score = user.score + newScore ;
+    return user.save()
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch();
+
+    });
+
+        
+       
+}
+
+    

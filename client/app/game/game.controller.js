@@ -159,10 +159,12 @@ angular.module('whoSaidApp')
           
     $scope.guessedRight = function() {
         
-        alert("tadaaaaa!!!!!\You guessed right!");
-         $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.newPhrase)
+        alert("tadaaaaa!!!!!\nYou guessed right!");
+        $scope.newScore = 250;
+        console.log(Auth.getCurrentUser()._id);
+         $httconsole.log("sucess updated score")p.put('/api/users/' + Auth.getCurrentUser()._id, $scope.newScore)
                     .success(function(){
-                    console.log("sucess put phrase")
+                    console.log("sucess updated score")
                 })
                     .error(function(err){
                     alert('Error! Something went wrong - put');
