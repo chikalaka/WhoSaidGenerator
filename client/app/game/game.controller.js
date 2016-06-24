@@ -19,7 +19,7 @@ angular.module('whoSaidApp')
         .error(function(err) {
         alert('Error! Something went wrong - get');
     })
-    
+    /*hello*/
     var len = $scope.currentGroups.length;
 
     function Create2DArray(rows) {
@@ -34,6 +34,7 @@ angular.module('whoSaidApp')
 
     $scope.selectedWho = Create2DArray(len);
     $scope.selectedWhom = Create2DArray(len);
+<<<<<<< HEAD
     
     //post a new sentence
     
@@ -211,6 +212,10 @@ angular.module('whoSaidApp')
         //console.log($scope.selectedWhom);
         
         //reset the cell after a guess
+=======
+
+    $scope.guess = function(parentIndex, index) {
+>>>>>>> e71519b0f9fd7e04646b9dfa4161a0b1a7ae2ffb
         $scope.selectedWho[parentIndex][index] = "";
         $scope.selectedWhom[parentIndex][index] = "";
         

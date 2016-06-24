@@ -12,6 +12,7 @@
 import _ from 'lodash';
 import Group from './group.model';
 
+<<<<<<< HEAD
 //insert phrase to group- need to change!!!
 export function addPhraseToGroup(req, res, next) {
   var gruopId = req.params.id;
@@ -36,6 +37,8 @@ export function addPhraseToGroup(req, res, next) {
 //end of custom function
     
 
+=======
+>>>>>>> e71519b0f9fd7e04646b9dfa4161a0b1a7ae2ffb
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
