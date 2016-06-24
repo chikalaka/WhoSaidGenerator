@@ -157,30 +157,51 @@ angular.module('whoSaidApp')
     }
    // -------------//
           
-    $scope.comparePhrases = function(phrase, index) {};
+    $scope.guessedRight = function() {
+        
+        alert("tadaaaaa!!!!!\You guessed right!");
+         $http.put('/api/users/' + Auth.getCurrentUser()._id, $scope.newPhrase)
+                    .success(function(){
+                    console.log("sucess put phrase")
+                })
+                    .error(function(err){
+                    alert('Error! Something went wrong - put');
+                });
+        
+        
+        
+    };
 
           
           
     $scope.guess = function(parentIndex, index) {
         // the users guessed
-        $scope.selectedWho[parentIndex][index];
-        $scope.selectedWhom[parentIndex][index];
+        console.log($scope.selectedWho[parentIndex][index]);
+        console.log($scope.selectedWhom[parentIndex][index]);
 //need to be converted to get phrase from db: 
-        index;
-        console.log(parentIndex);
-        console.log(index);
-        var orgPhrase = $scope.newPhrase;
-        if (orgPhrase.oneSaid.id == $scope.selectedWho.id && orgPhrase.said.id == $scope.selectedWhom.id )
-            {}
+        var group = $scope.currentGroups[parentIndex];
+        console.log(group);
+        var arrlength = group.phrases.length;
+        console.log(arrlength);
+        var phrase = group.phrases[arrlength-index-1];
+        //console.log($scope.currentGroups);
+        console.log(phrase);
+
+        //check if the user guessed right
+        if (phrase.oneSaid == $scope.selectedWho[parentIndex][index]._id && phrase.said == $scope.selectedWhom[parentIndex][index]._id )
+            {$scope.guessedRight();}
         else { alert ("wrong guess!!!")};
         
-        console.log($scope.selectedWho);
-                console.log($scope.selectedWhom);
-
+        index;
+        //console.log(parentIndex);
+        //console.log(index);
+        
+        
+        //console.log($scope.selectedWho);
+        //console.log($scope.selectedWhom);
+        
+        //reset the cell after a guess
         $scope.selectedWho[parentIndex][index] = "";
-        console.log($scope.selectedWho);
-                console.log($scope.selectedWhom);
-
         $scope.selectedWhom[parentIndex][index] = "";
         
         //parentIndex - integer indicate which group the user chose in the array: $scope.currentGroups
