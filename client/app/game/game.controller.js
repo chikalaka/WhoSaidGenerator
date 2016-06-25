@@ -158,13 +158,13 @@ angular.module('whoSaidApp')
    // -------------//
           
     $scope.guessedRight = function() {
-    alert("tadaaaaa!!!!!\nYou guessed right!");
+        alert("tadaaaaa!!!!!\nYou guessed right!");
 
-    $http.put('/api/users/addscore/' + Auth.getCurrentUser()._id, 250)
+        $http.put('/api/users/addscore/' + Auth.getCurrentUser()._id, '250')
                     .success(function(){
                 })
                     .error(function(err){
-                    alert('Error! Something went wrong - put');
+                    alert('Error! Something went wrong - put add score 250');
                 });
     }
 /*
