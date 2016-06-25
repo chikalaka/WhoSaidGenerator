@@ -32,6 +32,7 @@ angular.module('whoSaidApp')
         return arr;
     }
 
+    
     $scope.selectedWho = Create2DArray(len);
     $scope.selectedWhom = Create2DArray(len);
     //post a new sentence

@@ -17,16 +17,9 @@
                                 <p>{{selectedWhoPostid}}</p>
                                 <p>{{selectedWhomPostid}}</p>
 
-<<<<<<< HEAD
-                        
-                        
-
                         <input autocomplete="off" type="text" ng-model="groupSelected.name" placeholder="add to group" uib-typeahead="g as g.name for g in currentGroups | filter:groupSelected:strict | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectGroup($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateGroup.html" class="form-control">
-=======
-                        <input autocomplete="off" type="text" ng-model="groupSelected.name" placeholder="add to group" uib-typeahead="g as g.name for g in currentGroups | filter:groupSelected:strict | limitTo:7" typeahead-min-length='1' typeahead-on-select='onSelectPart($item, $model, $label, $event)' typeahead-template-url="components/userSearchTemplate/customTemplateGroup.html" class="form-control">
->>>>>>> e71519b0f9fd7e04646b9dfa4161a0b1a7ae2ffb
 
-                        <input type="text" class="form-control" name="Sentence" placeholder="Sentence that will be displayed" id="insertwidth">
+                        <input type="text" ng-model="sentence" class="form-control" name="Sentence" placeholder="Sentence that will be displayed" id="insertwidth">
 
                         <form class="navbar-form" role="search">
                             <div class="form-group">
