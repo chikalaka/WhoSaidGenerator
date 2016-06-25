@@ -172,6 +172,7 @@ export function authCallback(req, res, next) {
 export function addScoreToUser(req, res, next) {
   var userId = req.params.id;
   var newScore = req.body;
+    
 
   return User.findById(userId).exec()
     .then(user => {
