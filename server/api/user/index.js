@@ -13,6 +13,7 @@ router.get('/12345/:id', controller.getUserGroups);
 router.get('/12345', controller.usersDetails);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/12345/:id', auth.isAuthenticated(), controller.addGroupToUser);
+router.put('/addscore/:id', auth.isAuthenticated(), controller.addScoreToUser);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 

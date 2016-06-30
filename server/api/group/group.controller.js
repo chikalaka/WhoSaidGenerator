@@ -12,6 +12,70 @@
 import _ from 'lodash';
 import Group from './group.model';
 
+//insert phrase to group- need to change!!!
+export function addPhraseToGroup(req, res, next) {
+  var gruopId = req.params.id;
+    console.log(gruopId);
+    if (req.body ===parseInt(req.body,10)){
+        console.log("is Int");
+        var index = req.body;
+        console.log(index);
+
+        return Group.findById(gruopId).exec()
+            .then(group => {
+
+        group.phrases.splice(parseInt(index),1);
+      
+        return group.save()
+            .then(() => {
+        res.status(204).end();
+      })
+            .catch();
+
+    });    
+    }
+    else {
+  var newPhrase = req.body;
+    console.log(newPhrase);
+
+  return Group.findById(gruopId).exec()
+    .then(group => {
+
+    group.phrases.push(newPhrase);
+      
+    return group.save()
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch();
+
+    });
+    }
+}
+    
+    export function removePhraseFromGroup(req, res, next) {
+    var gruopId = req.params.id;
+        console.log(gruopId);
+        var index = req.body;
+        console.log(index);
+
+        return Group.findById(gruopId).exec()
+            .then(group => {
+
+        group.phrases.splice(parseInt(index),1);
+      
+        return group.save()
+            .then(() => {
+        res.status(204).end();
+      })
+            .catch();
+
+    });
+}
+
+//end of custom function
+    
+
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
   return function(entity) {
